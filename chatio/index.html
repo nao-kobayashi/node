@@ -1,0 +1,89 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ChatIO</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body{
+          background:#f9f9f9;
+        }
+
+        #container{
+          width:700px;
+          margin:0 auto;
+        }
+
+        #chatWindow{
+          height:300px;
+        }
+
+        #mainWrapper{
+          display:none;
+        }
+
+        #chatWrapper{
+            float:left;
+            border:1px #ccc solid;
+            border-radius: 10px;
+            background:#f4f4f4;
+            padding:10px;
+        }
+
+        #userWrapper{
+            float:left;
+            border:1px #ccc solid;
+            border-radius: 10px;
+            background:#f4f4f4;
+            padding:10px;
+            margin-Left:20px;
+            width:150px;
+            max-height:200px;
+        }
+
+        #namesWrapper{
+            float:left;
+            border:1px #ccc solid;
+            border-radius: 10px;
+            background:#f4f4f4;
+            padding:10px;
+            margin-Left:20px;
+        }
+
+        input{
+            height:30px;
+            border:solid 1px #ccc;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript">
+        var socket = io.connect('http://localhost:3000');
+        socket.connect();
+        socket.on('connect', function() {
+            console.log('connect');
+        });
+    </script>    
+</head>
+<body>
+    <div id="container">
+        <div id = "namesWrapper">
+            <h2>ChatIO</h2>
+            <p>Create Username:</p>
+            <form id="usernameForm">
+                <input type="text" size="35" id="username" />
+                <input type="submit" value="submit" />
+            </form>
+        </div>
+
+        <div id="mainWrapper">
+            <h2>ChatIO</h2>
+            <form id="messageForm">
+                <input type="text" size="35" id="message" placeholder="Say Something..." />
+                <input type="submit" value="submit" />
+            </form>
+        </div>
+    </div>    
+</body>
+</html>
